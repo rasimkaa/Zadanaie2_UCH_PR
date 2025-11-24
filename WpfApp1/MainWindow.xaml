@@ -1,0 +1,102 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Симплекс-метод" Height="580" Width="700"
+        Background="#ECEFF4" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <!-- Общие стили -->
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderBrush" Value="#B0BEC5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#B0BEC5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="8 4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="Симплекс-метод"
+                   FontSize="30"
+                   FontWeight="Bold"
+                   Foreground="#2E3440"
+                   HorizontalAlignment="Center"
+                   Margin="0 0 0 25"/>
+
+        <!-- Панель параметров -->
+        <Border Grid.Row="1" Background="White" Padding="15" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="#AAB0C3" BlurRadius="14" ShadowDepth="3" Opacity="0.35"/>
+            </Border.Effect>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 0">
+
+                <StackPanel Margin="15 0">
+                    <TextBlock Text="Переменные:" Margin="2"/>
+                    <TextBox x:Name="txtVars" Text="2"/>
+                </StackPanel>
+
+                <StackPanel Margin="15 0">
+                    <TextBlock Text="Ограничения:" Margin="2"/>
+                    <TextBox x:Name="txtCons" Text="2"/>
+                </StackPanel>
+
+                <StackPanel Margin="15 0">
+                    <TextBlock Text="Тип задачи:" Margin="2"/>
+                    <ComboBox x:Name="cmbType" Width="150">
+                        <ComboBoxItem Content="Максимизация" IsSelected="True"/>
+                        <ComboBoxItem Content="Минимизация"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <Button Content="Создать"
+                        Width="140" Height="40"
+                        Background="#4C8BF5"
+                        Foreground="White"
+                        Click="CreateForm_Click"
+                        Margin="20 0 0 0">
+                    <Button.Effect>
+                        <DropShadowEffect Color="#90A4AE" BlurRadius="8" ShadowDepth="2" Opacity="0.5"/>
+                    </Button.Effect>
+                </Button>
+
+            </StackPanel>
+        </Border>
+
+        <!-- Область для полей -->
+        <Border Grid.Row="2" Background="White" Padding="15" Margin="0 20 0 0" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect Color="#AAB0C3" BlurRadius="14" ShadowDepth="3" Opacity="0.35"/>
+            </Border.Effect>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="contentPanel"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>
